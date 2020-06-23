@@ -1,0 +1,39 @@
+version: 0.2
+
+env:
+  variables:
+    APPLICATION_NAME: "application_name"
+    AWS_ACCOUNT_ID: "account_id"
+    ENVIRONMENT: "environment"
+    S3_BUCKET_SUPPORT_LOVED_COM: "s3_support_loved_com"
+phases:
+  install:
+    runtime-versions: 
+      nodejs: 8
+    commands:
+      - ls -l      
+  pre_build:
+    commands:
+      - aws --version
+      - IMAGE_TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
+  build:
+    commands:
+      - echo $ENVIRONMENT
+      - yarn      
+      - yarn build:$ENVIRONMENT
+  post_build:
+    commands:
+      - cd $CODEBUILD_SRC_DIR
+      - printf '{"tag":"%s"}' $APPLICATION_NAME-$IMAGE_TAG > build.json
+      - echo $S3_BUCKET_SUPPORT_LOVED_COM
+      - aws s3 sync --acl public-read --delete build "s3://$S3_BUCKET_SUPPORT_LOVED_COM"
+artifacts:
+  files:
+    - build.json
+    - $CODEBUILD_SRC_DIR/build/**/*
+  name: build-$(AWS_REGION)-$(date +%Y-%m-%d)
+cache:
+    paths:
+        - node_modules/**/*
+        - public/**/*
+        - /usr/local/lib/node_modules/**/*

@@ -1,0 +1,270 @@
+html body #root{
+  background-color: #f1f1f1;
+}
+* {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+#root{
+  min-height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-left: 80px;
+}
+
+.route{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+@keyframes anim {
+  0% {
+    margin-left: 2000px;
+  }
+  100% {
+    margin-left: 0px;
+  }
+}
+
+#route{
+  position: relative;
+}
+
+#route > div {
+  animation: anim 0.3s ease;
+}
+
+.cell {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  text-align: center;
+}
+.rc-Calendar-header {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 32px;
+  margin: 40px auto 40px;
+}
+.rc-Month {
+  display: inline-block;
+  vertical-align: top;
+}
+.rc-Month-header {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.rc-Month-weekdays {
+  margin-left: 32px;
+}
+.rc-Month-weekdays-weekday {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  text-align: center;
+  font-weight: bolder;
+}
+.rc-Month--current{
+  background-color: #f6f6f6;
+}
+.rc-Month--current .rc-Month-header {
+  color: #4caf50;
+}
+.rc-Week {
+  height: 32px;
+}
+.rc-Week-number {
+  color: #777777;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  text-align: center;
+}
+.rc-Week-days {
+  border-left: 1px solid #eeeeee;
+  border-top: 1px solid #eeeeee;
+  display: inline-block;
+}
+.rc-Week:last-child .rc-Week-days {
+  border-bottom: 1px solid #eeeeee;
+}
+.rc-Week--current {
+  background-color: #c2c2c2;
+}
+.rc-Day {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  text-align: center;
+  border-right: 1px solid #eeeeee;
+  cursor: pointer;
+}
+.rc-Day:hover {
+  background-color: #4caf50;
+}
+.rc-Day--outside {
+  cursor: default;
+  color: #eeeeee;
+}
+.rc-Day--outside:hover {
+  background-color: transparent;
+}
+.rc-Day--event {
+  background-color: #eeeeee;
+}
+.rc-Day--current {
+  background-color: #4caf50;
+  color: #000;
+}
+.rc-Day--longEvent {
+  background-color: #5cb85c;
+}
+.rc-Day--warning {
+  background-color: #f0ad4e;
+}
+.calendar{
+  color: #767676;
+}
+.calendar > div{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.calendar .rc-Month{
+  margin-bottom: 24px;
+}
+.rc-Day--holiday{
+  background-color: #0030ff;
+  color: #fff;
+}
+.ReactModalPortal > div {
+  z-index: 10000 !important;
+}
+
+.modalInner{
+  width: 1170px;
+  outline: none;
+  padding: 16px 40px 16px 40px;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  max-height: 600px;
+}
+
+.paper{
+  padding: 24px 40px;
+  margin-bottom: 40px;
+  position: relative;
+}
+.copyToCLipboard{
+  display: flex;
+  align-items: center;
+}
+
+/* For now this class is absolutely not used in the project. For what it was added? */
+.cust-color{
+  color:  "#2196f3"
+}
+
+button[aria-selected=true]{
+  background-color: rgba(0, 146, 253, .14)
+}
+
+.tltp{
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dashed #b5b5b5;
+  width: fit-content;
+}
+
+.tltp:before,
+.tltp:after{
+  display: block;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s ease;
+  left: 50%;
+}
+
+.tltp:before{
+  content: attr(data-title);
+  background-color: rgba(0,0,0,.7);
+  bottom: 30px;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 5px;
+  text-transform: lowercase;
+}
+.tltp:after{
+  content: '';
+  border-top: 10px solid rgba(0,0,0,.7);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  bottom: 20px;
+  margin-left: -10px;
+}
+.tltp:hover:before,
+.tltp:hover:after{
+  opacity: 1;
+  visibility: visible;
+}
+
+.customTitle{
+  color: #121212;
+  font-weight: 600;
+}
+.p{
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #585858;
+  font-weight: 500 !important;
+  margin-bottom: 4px;
+}
+.p > span{
+  font-weight: 400;
+  margin-right: 8px;
+  /* color: rgba(0, 0, 0, 0.54); */
+  color: #717171;
+}
+.divider{
+  margin: 2px 0 8px 0 !important;
+  width: 100%;
+}
+.blockTitle{
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.lastP{
+  margin-bottom: 16px !important;
+}
+
+.fieldName{
+  font-weight: 400 !important;
+  color: #717171 !important;
+}
+.field{
+  color: #585858 !important;
+  font-weight: 500 !important;
+}
+.refresh {
+  fill: grey
+}
+.refresh:hover {
+  fill: #2196f3
+}

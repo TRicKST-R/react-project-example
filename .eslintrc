@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "react-app",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier",
+    "eslint-plugin-sonarjs",
+    "eslint-plugin-promise"
+  ],
+  "rules": {
+    "indent": ["error", "tab", {"SwitchCase": 1}]
+  }
+}
